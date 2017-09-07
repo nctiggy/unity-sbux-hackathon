@@ -26,9 +26,9 @@ paths:
     get:
       tags:
         - storage
-      summary: "Get a return of all storage arrays"
-      description: "This endpoint will return a list From couchDB"
-      operationId: getStorageArray
+      summary: Get a return of all storage arrays
+      description: This endpoint will return a list From couchDB
+      operationId: get_storage_array
       consumes:
         - application/json
       produces:
@@ -46,7 +46,7 @@ paths:
         - storage
       summary: Create a new stroage array entry
       description: This enpoint will create a new storage array entry in couchdb
-      operationId: newStorageArray
+      operationId: new_storage_array
       consumes:
         - application/json
       produces:
