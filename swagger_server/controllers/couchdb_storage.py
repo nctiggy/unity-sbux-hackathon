@@ -1,4 +1,5 @@
 import couchdb
+import json
 
 
 class Couch_storage:
@@ -23,4 +24,5 @@ class Couch_storage:
 
     def createNew(self, params):
         print(params)
+        print(type(params))
         self.db.save(params)

@@ -4,12 +4,12 @@ from datetime import date, datetime
 from typing import List, Dict
 from six import iteritems
 from ..util import deserialize_date, deserialize_datetime
-from couchdb_storage import Couch_storage
+from swagger_server.controllers.couchdb_storage import Couch_storage
 
 couch_params = {
-            "hostname": "localhost",
-            "port": 5984,
-            "dbName": "storage"
+            "couchdb_hostname": "localhost",
+            "couchdb_port": "5984",
+            "couchdb_name": "storage"
             }
 
 
@@ -20,7 +20,10 @@ def get_storage_array():
 
     :rtype: StorageObject
     """
-    return 'do some magic!'
+#    couchdb = Couch_storage.new(couch_params)
+    couchdb = Couch_storage(couch_params)
+#    return couchdb.hostname
+    return couchdb.returnAll()
 
 
 def new_storage_array(body):
@@ -32,7 +35,7 @@ def new_storage_array(body):
 
     :rtype: None
     """
-    if connexion.request.is_json:
-        body = StorageObject.from_dict(connexion.request.get_json())
-    couchdb = Couch_storage.new(couch_params)
+#    if connexion.request.is_json:
+#        body = StorageObject.from_dict(connexion.request.get_json())
+    couchdb = Couch_storage(couch_params)
     couchdb.createNew(body)
