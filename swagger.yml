@@ -1,0 +1,100 @@
+swagger: '2.0'
+info:
+  description: >-
+    This is a restful API endpoint to enable easy query access to the Starbucks
+    fleet
+  version: 0.0.1 - Ultra Alpha
+  title: SBUX-Hack-a-thon
+  contact:
+    name: Craig J Smith
+    email: craig.j.smith@dell.com
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+host: localhost
+basePath: /v1
+tags:
+  - name: unity
+    description: Everything about your Unity array
+    externalDocs:
+      description: unity api docs
+      url: 'http://<unityIp>/apidocs'
+schemes:
+  - http
+paths:
+  /storage:
+    get:
+      tags:
+        - storage
+      summary: "Get a return of all storage arrays"
+      description: "This endpoint will return a list From couchDB"
+      operationId: getStorageArray
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/StorageObject'
+        '405':
+          description: Invalid input
+    post:
+      tags:
+        - storage
+      summary: Create a new stroage array entry
+      description: This enpoint will create a new storage array entry in couchdb
+      operationId: newStorageArray
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Storage array details to be added to the entry
+          required: true
+          schema:
+            $ref: '#/definitions/StorageObject'
+      responses:
+        '201':
+          description: Accepted the request
+definitions:
+  StorageObject:
+    type: object
+    properties:
+      serialNumber:
+        type: string
+        example: VIRT1711XKZ2Q6
+      ipAddress:
+        type: string
+        example: 192.168.0.100
+      model:
+        type: string
+        example: unity
+      vendor:
+        type: string
+        example: DellEMC
+      installDate:
+        type: string
+        example: 03/25/2017
+      maintenanceContractEndDate:
+        type: string
+        example: 03/25/2021
+      location:
+        type: string
+        example: Chandler
+      environment:
+        type: string
+        example: production
+      status:
+        type: string
+        example: Full
+      tier:
+        type: string
+        example: standard
+externalDocs:
+  description: Github repo
+  url: 'https://github.com/nctiggy/unity-sbux-hackathon'
