@@ -56,6 +56,11 @@ docker-compose up -d
 curl -i -XPOST http://localhost:8086/query --data-urlencode "q=CREATE DATABASE mydb"
 ```
 
+## Generate code using swagger-codegen
+```
+swagger-codegen generate -i ./swagger.yml -l python-flask -o ./
+```
+
 # Swagger generated server
 
 ## Overview
