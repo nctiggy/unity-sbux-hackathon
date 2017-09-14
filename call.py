@@ -1,16 +1,38 @@
 import couchdb
 
 
-params = {
-    'ipAddress': '192.168.0.34',
-    'model': 'UnityVSA',
-    'serialNumber': '123456789',
-    'arrayName': 'myUnity',
-    'softwareVersion': '4.2.0'}
+params1 = {
+  "serialNumber": "00182672345",
+  "ipAddress": "192.168.0.124",
+  "model": "vmax",
+  "vendor": "DellEMC",
+  "installDate": "03/25/2017",
+  "maintenanceContractEndDate": "12/25/2017",
+  "location": "Ashburn",
+  "environment": "production",
+  "status": "ok",
+  "tier": "performance"
+        }
+
+params2 = {
+  "serialNumber": "VIRT1735TG8NVL",
+  "ipAddress": "10.253.232.18",
+  "model": "unity",
+  "vendor": "DellEMC",
+  "installDate": "03/25/2017",
+  "maintenanceContractEndDate": "03/25/2021",
+  "location": "Chandler",
+  "environment": "production",
+  "status": "Full",
+  "tier": "standard"
+        }
+
 couch = couchdb.Server()
-dbname = 'unity'
-#if dbname in couch:
+dbname = 'storage'
+if not dbname in couch:
+    db = couch.create(dbname)
 db = couch[dbname]
 #else:
 #    db = couch.create(dbname)
-db.save(params)
+db.save(params1)
+db.save(params2)

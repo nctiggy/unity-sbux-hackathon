@@ -63,6 +63,25 @@ paths:
         201:
           description: "Accepted the request"
       x-swagger-router-controller: "swagger_server.controllers.storage_controller"
+  /storage/search/{search_string}:
+    get:
+      tags:
+      - "storage"
+      summary: "Search for a match in any field in the storage couchDB"
+      description: "This endpoint will return a storage object if any key matches"
+      operationId: "search_storage_arrays"
+      parameters:
+      - name: "search_string"
+        in: "path"
+        description: "ID of pet to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/StorageObject"
+      x-swagger-router-controller: "swagger_server.controllers.storage_controller"
 definitions:
   StorageObject:
     type: "object"

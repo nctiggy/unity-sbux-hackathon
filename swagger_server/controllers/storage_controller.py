@@ -39,3 +39,6 @@ def new_storage_array(body):
 #        body = StorageObject.from_dict(connexion.request.get_json())
     couchdb = Couch_storage(couch_params)
     couchdb.createNew(body)
+
+def search_storage_arrays(search_string):
+    return "Do some magic!"
